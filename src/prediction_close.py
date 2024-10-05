@@ -1,13 +1,13 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-from config.config import *
+# from config.config import *
 import keras
 import os
 
-#NAME_COMPANY = "ISA_Historical_Info"
-#PATH_DATA_PROCESSED = f"data/processed/{NAME_COMPANY}_processed.csv"
-#MODEL_PATH = f"/Users/michaelandr/Desktop/MLOps_market_models/models/model_lstm_ISA_Historical_Info.h5"
+NAME_COMPANY = "ISA_Historical_Info"
+PATH_DATA_PROCESSED = f"data/processed/{NAME_COMPANY}_processed.csv"
+MODEL_PATH = f"/Users/michaelandr/Desktop/MLOps_market_models/models/model_lstm_ISA_Historical_Info.h5"
 
 
 class StockPricePredictor:
