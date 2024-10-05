@@ -1,9 +1,12 @@
 # Declare general variables
 # To productive models:
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Ruta al directorio del proyecto
 NAME_COMPANY = "ISA_Historical_Info"
-PATH_DATA_RAW = f"../data/raw/{NAME_COMPANY}.csv"
-PATH_DATA_PROCESSED = f"../data/processed/{NAME_COMPANY}.csv"
-MODEL_PATH = f"../models/model_lstm_{NAME_COMPANY}.h5"
+PATH_DATA_RAW = f"data/raw/{NAME_COMPANY}.csv"
+PATH_DATA_PROCESSED = os.path.join(BASE_DIR, 'data', 'processed', f'{NAME_COMPANY}_processed.csv')
+MODEL_PATH = os.path.join(BASE_DIR, 'models', 'model_lstm_ISA_Historical_Info.h5')
 
 # To training models:
 PATH_FINAL_TRAIN = f"../data/processed/processed_training_set_{NAME_COMPANY}"

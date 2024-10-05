@@ -9,22 +9,32 @@ class PreprocessInfo:
 
     def load_data(self):
         """Cargar los datos desde el archivo CSV."""
-        self.dataset = pd.read_csv(self.input_path)
+        try:
+            self.dataset = pd.read_csv(self.input_path)
+        except FileNotFoundError:
+            raise Exception(f"==== El archivo no fue encontrado en la ruta: {self.input_path}")
 
     def rename_columns(self):
         """Renombrar las columnas del dataset."""
-        self.dataset.rename(columns={
-            'Fecha': 'Date',
-            'Último': 'Close',
-            'Apertura': 'Open',
-            'Máximo': 'High',
-            'Mínimo': 'Low',
-        }, inplace=True)
+        try:
+            self.dataset.rename(columns={
+                'Fecha': 'Date',
+                'Último': 'Close',
+                'Apertura': 'Open',
+                'Máximo': 'High',
+                'Mínimo': 'Low',
+            }, inplace=True)
+        except:
+            raise Exception(f"Problemas asociados a los nombres de las columnas")
 
     def format_date(self):
         """Transformar el formato de la columna 'Date' de aaaa.mm.dd a aaaa-mm-dd."""
-        self.dataset['Date'] = self.dataset['Date'].str.replace('.', '-', regex=False)
-        self.dataset['Date'] = pd.to_datetime(self.dataset['Date'], format='%d-%m-%Y')
+    
+        try:
+            self.dataset['Date'] = self.dataset['Date'].str.replace('.', '-', regex=False)
+            self.dataset['Date'] = pd.to_datetime(self.dataset['Date'], format='%d-%m-%Y')
+        except:
+            raise Exception(f"Problemas en formato o estructura de la columna Date")
 
     @staticmethod
     def transformar_a_float(valor):
