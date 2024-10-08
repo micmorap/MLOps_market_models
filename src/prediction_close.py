@@ -54,7 +54,9 @@ class StockPricePredictor:
         self.normalize_data()
         self.load_model()
         prediction = self.predict()
-        print(f"Predicción desnormalizada del valor de la acción: {prediction:.2f}")
+        # return f"Predicción desnormalizada del valor de la acción: {prediction:.2f}"
+        return float(prediction)
+
 
 # Ejemplo de uso
 if __name__ == "__main__":
